@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:ejercicio2_login/entidades/user.dart';
-import 'package:ejercicio2_login/widgets/snackbar.dart';
+import 'package:ejercicio2_login/data/users.dart';
 
 class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
@@ -16,11 +16,7 @@ class _Screen1State extends State<LoginScreen> {
 
   String username = '';
   String password = '';
-  List<User> users = [
-    User(email: "email@mail.com", password: "pass1234", name: "Laura", age: 38),
-    User(email: "test@mail.com", password: "test123", name: "Carlos", age: 25),
-    User(email: "admin@mail.com", password: "admin", name: "Ana", age: 30),
-  ];
+
 
   User? getUser(String email) {
     final searchedUser = users.where((user) => user.email == email);
@@ -69,9 +65,11 @@ void showMessage(String text) {
             const SizedBox(height: 20),
             TextField(
               controller: passController,
+              obscureText: true,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
                 hintText: 'Password',
+                
               ),
             ),
             ElevatedButton(onPressed: login, child: Text("Login")),
