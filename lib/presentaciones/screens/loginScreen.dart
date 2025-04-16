@@ -33,7 +33,7 @@ class _Screen1State extends State<LoginScreen> {
         User? searchedUser = getUser(username);
         if (searchedUser != null) {
           if (searchedUser.password == password) {
-            context.push('/login', extra: searchedUser.name);
+            context.push('/list', extra: searchedUser.name);
           } else {
             showMessage("Password incorrecta");
           }
@@ -45,7 +45,10 @@ class _Screen1State extends State<LoginScreen> {
   }
 void showMessage(String text) {
   ScaffoldMessenger.of(context).showSnackBar(
-    SnackBar(content: Text(text)),
+    SnackBar(
+      content: Text(text),
+      backgroundColor: Color.fromRGBO(197, 11, 11, 0.498),
+    ),
   );
 }
   @override
